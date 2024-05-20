@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Attendance</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+    <script src='main.js'></script>
+     <style>
+        th{
+            width: 200px;
+            color: red;
+        }
+        td{
+            text-align: center;
+            
+        }
+        .out{
+        
+            background-image: url(images/bg3.jpg);
+            height: 100%;
+            width: 100vw;
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: absolute;
+        }
+        .vaccum{
+            background-color: aliceblue;
+        }
+        .body{
+            display: flex;
+        }
+        .view{
+            float: left;
+            color: red;
+        }
+        .post{
+            float: right;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="out">
+        
+        <form action="/attendance" method="post">
+                    <a href="/index" class="home" id="home"><img src="images/home.png" alt="home" class="home"></a>
+
+            <center>
+            <h1>Manage Attendance</h1>
+            
+            <h1>Subject: <span style="color: red;">{{subject}}</span></h1>
+<a href="/postattendance?subject={{subject}} " class="post">POST ATTENDANCE</a>
+            <a href="/viewattendance?subject={{subject}}" class="view">VIEW ATTENDANCE</a>
+        </center>
+        </form>
+        
+    </div>
+    
+</body>
+</html>

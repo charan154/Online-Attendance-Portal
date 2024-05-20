@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+  <title>Student View</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    
+  </style>
+</head>
+<body>
+<center>
+  <h1>Welcome, <span style="color: red;">{{studentname}}</span>!</h1>
+  <h1>Your attendance percentage is <span style="color: red;">{{attendancePercentage}}</span></h1>
+              <a href="/index" class="home" id="home"><img src="images/home.png" alt="home" class="home"></a>
+
+  <input type="hidden" name="studentname" value="{{studentname}}">
+  <table border="10" class="vaccum">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>1</th>
+            <th>2 </th>
+            <th>3 </th>
+            <th>4 </th>
+            <th>5 </th>
+            <th>6 </th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each groupedData}}
+        <tr>
+          <td>{{@key}}</td>
+          <td>{{1}}</td>
+          <td>{{2}}</td>
+          <td>{{3}}</td>
+          <td>{{4}}</td>
+          <td>{{5}}</td>
+          <td>{{6}}</td>
+          
+        </tr>
+        {{/each}}
+    </tbody>
+  </table>
+  </center>
+</body>
+</html>

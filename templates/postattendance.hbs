@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+   
+
+    <style>
+        th{
+            width: 200px;
+            color: red;
+        }
+        td{
+            text-align: center;
+            
+        }
+        .out{
+        
+            background-image: url(images/bg2.jpg);
+            height: 100%;
+            width: 100vw;
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: absolute;
+        }
+        .vaccum{
+            background-color: aliceblue;
+        }
+        .body{
+            display: flex;
+        }
+       select{
+        background-color: transparent;
+        height: 40px;
+        width: 170px;
+        box-sizing: border-box;
+        border: none;
+        text-size-adjust: inherit;
+        font-size: 25px;
+        color: red;
+       }
+       
+    </style>
+
+
+</head>
+
+<body>
+    <br><br>
+    <center>
+        <form action="/postattendance" method="post" class="out" id="attendanceForm">
+        <input type="hidden" name="subject" value="{{ subject }}">
+            <a href="/index" class="home" id="home"><img src="images/home.png" alt="home" class="home"></a>
+            <h1>Subject: <span style="color: red;">{{subject}}</span></h1>
+            <select name="period" id="period" class="period">
+                <option value="1">Period 1</option>
+                <option value="2">Period 2</option>
+                <option value="3">Period 3</option>
+                <option value="4">Period 4</option>
+                <option value="5">Period 5</option>
+                <option value="6">Period 6</option>
+            </select>
+            <br><br><br><br>
+            <table border="10" class="vaccum">
+                <thead>
+                    <tr>
+                        <th>Rollnumbers</th>
+                        <th>Present</th>
+                        <th>Absent</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each assignments}}
+                    <tr>
+                        <td>{{this.name}}</td>
+                        <td>
+                            <input type="checkbox" name="present[]" value="{{this.name}}">
+                            
+                        </td>
+                        <td><input type="checkbox" name="absent[]" value="{{this.name}}"></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <br>
+            <br>
+            <button type="submit">Submit Attendance</button>
+        </form>
+    </center>
+    
+    
+</body>
+
+    <script>
+        function handleCheckboxChange(checkbox) {
+            if (checkbox.name === "present[]" && checkbox.checked) {
+                const absentCheckbox = checkbox.parentNode.nextElementSibling.querySelector('input[name="absent[]"]');
+                if (absentCheckbox) {
+                    absentCheckbox.checked = false;
+                }
+            }
+            if (checkbox.name === "absent[]" && checkbox.checked) {
+                const presentCheckbox = checkbox.parentNode.previousElementSibling.querySelector('input[name="present[]"]');
+                if (presentCheckbox) {
+                    presentCheckbox.checked = false;
+                }
+            }
+        }
+
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                handleCheckboxChange(checkbox);
+            });
+        });
+    </script>
+</html>

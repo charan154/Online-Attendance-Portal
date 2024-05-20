@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+    <link rel="stylesheet" href="/student.css">
+    <script src='index.js'></script>
+    <style>
+        body{
+    background-image: url(images/cmrit.jpg);
+height: 95%;
+width: 95vw;
+background-size: cover;
+background-repeat: no-repeat;
+position: absolute;
+  }
+        .home{
+      float: left;
+      height: 30px;
+      width: 50px;
+      color: black;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    }
+    </style>
+</head>
+<body>
+    
+    <center>
+        
+        <div class="out">
+          <a href="/index" class="home" id="home"><img src="images/home.png" alt="home" class="home"></a>
+            <form method="post" action="/faculty" name="faculty">
+            <br>
+            
+                <label class="uname">Name</label>
+            
+            <input type="text" name="fname" placeholder="Faculty Username">
+    
+            
+            
+            <br><br>
+            
+            <label class="pwd">Password</label>
+            
+                <input type="password" name="fpassword" placeholder="Password">
+           
+            <br><br>
+            <button type="submit">Login</button>
+        </form>
+        </div>
+        
+    
+    <div class="si">
+        <label class="side">Faculty login
+        </label>
+    </div>
+    </center>
+    
+</body>
+</html>

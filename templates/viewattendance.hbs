@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
+  <title>View Attendance</title>
+  <style>
+    th {
+      width: 200px;
+      color: red;
+    }
+    td {
+      text-align: center;
+    }
+    .vaccum {
+      background-color: aliceblue;
+    }
+    .body {
+      display: flex;
+    }
+    .home{
+      float: left;
+      height: 30px;
+      width: 50px;
+      color: black;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    }
+  </style>
+</head>
+<body>
+      <a href="/index" class="home" id="home"><img src="/images/home.png" alt="home" class="home"></a>
+
+  <center>
+    <h1>Attendance Records</h1>
+
+    <form method="post" action="/viewattendance">
+      <h1>Subject: <span style="color: red;">{{subject}}</span></h1> 
+
+      <input type="hidden" name="subject" value="{{subject}}">
+      <label class="selectdate" for="date">Select Date:</label>
+      <input type="date" id="date" class="date" name="date" required>
+      <select name="period" id="period">
+                <option value="1">Period 1</option>
+                <option value="2">Period 2</option>
+                <option value="3">Period 3</option>
+                <option value="4">Period 4</option>
+                <option value="5">Period 5</option>
+                <option value="6">Period 6</option>
+            </select>
+      <button type="submit">View Attendance</button>
+    </form>
+    <br>
+    <br>
+
+    <table border="10" class="vaccum">
+      <thead>
+        <tr>
+          <th>Roll Number</th>
+          <th>Attendance</th>
+          <th>Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each attendanceRecords}}
+          <tr>
+            <td>{{name}}</td>
+            <td>{{attendance}}</td>
+            <td><a href="/editattendance/{{_id}}?subject={{{subject}}}">Edit</a></td>
+            
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </center>
+
+</body>
+</html>

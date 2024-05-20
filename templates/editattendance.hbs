@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/css/style.css'>
+  <title>Edit Attendance</title>
+  <style>
+    .home{
+      float: left;
+      height: 30px;
+      width: 50px;
+      color: black;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    }
+  </style>
+</head>
+<body>
+  <a href="/index" class="home" id="home" ><img src="/images/home.png" alt="home" class="home"></a>
+
+  <center>
+    <h1>Subject: <span style="color: red;">{{subject}}</h1> 
+
+    <form method="POST" action="/editattendance/{{attendanceRecord._id}}">
+      <input type="hidden" name="subject" value="{{subject}}"> 
+      <label>
+        <input type="checkbox" name="attendance" value="present" {{#if attendanceRecord.attendance}}checked{{/if}}> present
+      </label>
+      <label>
+        <input type="checkbox" name="attendance" value="absent" {{#unless attendanceRecord.attendance}}checked{{/unless}}> absent
+      </label>
+      <br>
+      <br>
+      <button type="submit">Update Attendance</button>
+    </form>
+  </center>
+
+  <script>
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    checkboxes.forEach((checkbox) => {
+      checkbox.addEventListener('change', function () {
+        checkboxes.forEach((otherCheckbox) => {
+          if (otherCheckbox !== this) {
+            otherCheckbox.checked = false;
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
